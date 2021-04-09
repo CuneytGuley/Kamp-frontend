@@ -1,11 +1,10 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Renkler</th>
-    </tr>
-  </thead>
-</table>
+
 <ul class="list-group">
+  <li 
+    [class]="getAllColorClass()" 
+    routerLink = "/cars">
+    Tüm Renkler
+  </li>
   <li
     (click)="setCurrentColor(color)"
     routerLink = "/cars/color/{{color.colorId}}"

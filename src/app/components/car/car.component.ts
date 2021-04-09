@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CarComponent implements OnInit {
   cars: Car[] = [];
   dataLoaded = false;
+  filterText = "";
 
   constructor(private carService: CarService, private activatedRoute:ActivatedRoute) { }
 
@@ -25,7 +26,6 @@ export class CarComponent implements OnInit {
         this.getCars()
       }
     })
-
   }
 
   getCars() {
