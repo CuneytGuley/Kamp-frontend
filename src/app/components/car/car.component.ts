@@ -3,6 +3,8 @@ import { Car } from 'src/app/models/car';
 import { HttpClient } from '@angular/common/http';
 import { CarService } from 'src/app/services/car.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-car',
@@ -14,7 +16,8 @@ export class CarComponent implements OnInit {
   dataLoaded = false;
   filterText = "";
 
-  constructor(private carService: CarService, private activatedRoute:ActivatedRoute) { }
+  constructor(private carService: CarService, private activatedRoute:ActivatedRoute, 
+    private toastrService:ToastrService, private cartService:CartService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -49,4 +52,12 @@ export class CarComponent implements OnInit {
     })
   }
 
+  addToCart(car:Car){
+    if(car.id===1){
+      this.toastrService.error("Hata", "Bu araç kiralanamaz")
+    }else{
+      this.toastrService.success("Kiralandı", car.brandName)
+      this.cartService.addToCart(car);
+    }
+  }
 }

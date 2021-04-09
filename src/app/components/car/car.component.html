@@ -35,7 +35,7 @@
             <td>{{car.dailyPrice}}</td>
             <td>{{car.dailyPrice | vatAdded : 18| currency}}</td>
             <td><button class="btn btn-primary">Detay</button></td>
-            <td><button class="btn btn-primary">Kirala</button></td>
+            <td><button (click)="addToCart(car)" class="btn btn-primary">Kirala</button></td>
         </tr>
     </tbody>
     
